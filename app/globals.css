@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Canvas & Base Tokens */
+    --background: 0 0% 100%;           /* #FFFFFF Pure White */
+    --foreground: 222.2 84% 4.9%;       /* #0F172A Slate-900 (High contrast) */
+
+    --card: 210 40% 98%;               /* #F8FAFC Slate-50 */
+    --card-foreground: 222.2 84% 4.9%;  /* #0F172A */
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    /* Brand Primary Action: Orange */
+    --primary: 23.6 100% 45%;          /* #E55A00 Accessible Orange */
+    --primary-foreground: 0 0% 100%;   /* White */
+    --primary-hover: 24.3 95% 40%;      /* #C2410C */
+    --primary-bright: 28.7 100% 56%;   /* #FF8A1F for gradient starts */
+
+    /* Brand Secondary Structure: Trust Blue */
+    --secondary: 221.2 83.2% 53.3%;    /* #1D4ED8 Deep Trust Blue */
+    --secondary-foreground: 0 0% 100%;
+    --secondary-subtle: 214 100% 97%;  /* #EFF6FF Light Blue BG */
+
+    --muted: 210 40% 96.1%;            /* #F1F5F9 */
+    --muted-foreground: 215.4 16.3% 46.9%; /* #475569 Slate-600 */
+
+    --accent: 214 100% 97%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;       /* #E2E8F0 Hairline Border */
+    --input: 214.3 31.8% 91.4%;
+    --ring: 23.6 100% 45%;
+
+    --radius: 0.75rem;
+
+    /* Semantic Typography Tokens */
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #64748B;
+    --text-orange: #E55A00;
+    --text-blue: #1D4ED8;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background-color: #FFFFFF;
+    color: var(--text-primary);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-outfit), sans-serif;
+    color: var(--text-primary);
+    letter-spacing: -0.025em;
+    font-weight: 700;
+  }
+}
+
+/* Custom Utilities & Components */
+@layer components {
+  /* Glassmorphism Light Bar */
+  .glass-nav {
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    box-shadow: 0 4px 12px rgba(11, 14, 21, 0.04);
+  }
+
+  /* Action Buttons */
+  .btn-orange-gradient {
+    background: linear-gradient(135deg, #FF8A1F 0%, #E55A00 100%);
+    color: #FFFFFF;
+    font-weight: 600;
+    box-shadow: 0 4px 14px rgba(229, 90, 0, 0.28);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .btn-orange-gradient:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(229, 90, 0, 0.38);
+    filter: brightness(1.05);
+  }
+
+  .btn-orange-gradient:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(229, 90, 0, 0.25);
+  }
+
+  .btn-blue-outline {
+    background: #FFFFFF;
+    border: 1.5px solid #1D4ED8;
+    color: #1D4ED8;
+    font-weight: 600;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .btn-blue-outline:hover {
+    background: #EFF6FF;
+    border-color: #1E40AF;
+    color: #1E40AF;
+  }
+
+  .btn-whatsapp {
+    background: #25D366;
+    color: #FFFFFF;
+    font-weight: 600;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.28);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .btn-whatsapp:hover {
+    background: #20BA5A;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35);
+  }
+
+  /* Badge styling */
+  .badge-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+    background: #FFF7ED;
+    color: #E55A00;
+    border: 1px solid #FFEDD5;
+  }
+
+  .badge-blue {
+    background: #EFF6FF;
+    color: #1D4ED8;
+    border: 1px solid #DBEAFE;
+  }
+
+  /* Hairline Cards with Brand Border Hover */
+  .service-card {
+    position: relative;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(11, 14, 21, 0.04);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+  }
+
+  .service-card:hover {
+    transform: translateY(-3px);
+    border-color: #FF8A1F;
+    box-shadow: 0 12px 28px rgba(11, 14, 21, 0.08), 0 0 0 1px rgba(255, 138, 31, 0.15);
+  }
+
+  .service-card-blue:hover {
+    border-color: #1D4ED8;
+    box-shadow: 0 12px 28px rgba(11, 14, 21, 0.08), 0 0 0 1px rgba(29, 78, 216, 0.15);
+  }
+
+  /* Inverse Dark Panel for Footer */
+  .footer-dark {
+    background-color: #0B0F19;
+    color: #94A3B8;
+    border-top: 1px solid #1E293B;
+  }
+
+  .footer-dark h3, .footer-dark h4 {
+    color: #FFFFFF;
+  }
+
+  .footer-dark a {
+    color: #94A3B8;
+    transition: color 0.2s ease;
+  }
+
+  .footer-dark a:hover {
+    color: #FF8A1F;
+  }
+
+  /* Grid pattern background */
+  .bg-grid-pattern {
+    background-size: 32px 32px;
+    background-image: 
+      linear-gradient(to right, rgba(226, 232, 240, 0.4) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(226, 232, 240, 0.4) 1px, transparent 1px);
+  }
+
+  .bg-dot-pattern {
+    background-image: radial-gradient(rgba(203, 213, 225, 0.5) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
